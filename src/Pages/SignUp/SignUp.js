@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const SignUp = () => {
@@ -13,6 +13,7 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const handleBuyerOption = () => {
     setUserRole({ role: "buyer" });
@@ -49,6 +50,7 @@ const SignUp = () => {
           .then((data) => {
             if (data.acknowledged) {
               toast.success(`Successfully created ${role} user.`);
+              navigate("/");
             }
           });
       })
@@ -77,6 +79,7 @@ const SignUp = () => {
           .then((data) => {
             if (data.acknowledged) {
               toast.success(`User created Successfully`);
+              navigate("/");
             }
           });
       })

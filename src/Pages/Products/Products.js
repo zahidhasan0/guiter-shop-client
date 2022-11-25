@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 import ProductBookModal from "./ProductBookModal/ProductBookModal";
 import ProductCard from "./ProductCard/ProductCard";
 
