@@ -1,3 +1,4 @@
+import DashboardLayout from "../LayOut/DashboardLayout";
 import Main from "../LayOut/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -35,5 +36,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/allproducts/${params.id}`),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [{}],
   },
 ]);
