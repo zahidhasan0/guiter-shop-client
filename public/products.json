@@ -1,0 +1,122 @@
+[
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://media.musiciansfriend.com/is/image/MMGS7/P1DC-12-SM-12-String-Dreadnought-Acoustic-Electric-Guitar-Medium-Brown-Stain/L40708000001000-00-500x500.jpg",
+        "name": "Fender FA-15 3/4 Steel, Wood",
+        "originalPrice": 56,
+        "resalePrice": 40,
+        "location": "Cantonment, Cumilla",
+        "sellerName": "Riyashad",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://baadok.com/wp-content/uploads/2021/06/FB_IMG_1624355353406-247x296.jpg",
+        "name": "Fender FA-33 3/4 Wood, Light Wood",
+        "originalPrice": 80,
+        "resalePrice": 69,
+        "location": "Cantonment, Cumilla",
+        "sellerName": "Habib",
+        "useTime": "2 years",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://www.guitaroctave.com/wb/wp-content/uploads/2022/01/Sqoe-SQ-EC-FG-acoustic-guitar-price-in-bd-02.webp",
+        "name": "Octave Guiter UUY-15 , Black",
+        "originalPrice": 78,
+        "resalePrice": 55,
+        "location": "Kandirpar, Cumilla",
+        "sellerName": "Sajidul",
+        "useTime": "6 months",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://media.musiciansfriend.com/is/image/MMGS7/Special-X-Style-000-Cutaway-Acoustic-Electric-Guitar-Black/L66003000001000-00-500x500.jpg",
+        "name": "Gitamu- XXI, Black",
+        "originalPrice": 80,
+        "resalePrice": 70,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Messi",
+        "useTime": "21 months",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electro-acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb4",
+        "img": "https://www.guitaroctave.com/wb/wp-content/uploads/2022/08/Tanglewood-TWBB-SFC-E-electro-acoustic-guitar-price-in-BD-01.webp",
+        "name": "Octave Electro Acoustic Steel, Black",
+        "originalPrice": 74,
+        "resalePrice": 48,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Ben Stokes",
+        "useTime": "5 months",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electro-acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb4",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu1EYzJXPHur3K7amyDbEIOFnw9TQ25-a1FQ&usqp=CAU",
+        "name": "Linmu Electro Acoustic-Bloack",
+        "originalPrice": 86,
+        "resalePrice": 70,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Rakeem Cornwall",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electro-acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb4",
+        "img": "https://m.media-amazon.com/images/I/61SGxPWXtoL.jpg",
+        "name": "Redish Electro Auc",
+        "originalPrice": 126,
+        "resalePrice": 110,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Sakib Al Hasan",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electric",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb5",
+        "img": "https://diamu.com.bd/wp-content/uploads/2018/07/Ibanez-GRG-150-DX-Electric-Guitar.jpg",
+        "name": "Black Horse Electric Guiter",
+        "originalPrice": 150,
+        "resalePrice": 120,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Ms Dhoni",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electric",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb5",
+        "img": "https://diamu.com.bd/wp-content/uploads/2021/12/Ibanez-RG550-Electric-Guitar-Red.jpg",
+        "name": "Red Onion Combo Electric Guitar",
+        "originalPrice": 140,
+        "resalePrice": 120,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Kumar Sangakkara",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electric",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb5",
+        "img": "https://images.squarespace-cdn.com/content/v1/578da7ec197aea33c80451b5/1612555889095-B8QVRCKA32E9WOOPWKVR/BARSTF-RLB.jpg",
+        "name": "Angry Abul Electric Guitar",
+        "originalPrice": 225,
+        "resalePrice": 210,
+        "location": "Cantonment Cumilla",
+        "sellerName": "Ronaldo",
+        "useTime": "1 year",
+        "salePostDate": "24 November, 2022"
+    }
+]

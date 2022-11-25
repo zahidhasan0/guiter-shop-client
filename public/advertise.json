@@ -1,0 +1,46 @@
+[
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://media.musiciansfriend.com/is/image/MMGS7/P1DC-12-SM-12-String-Dreadnought-Acoustic-Electric-Guitar-Medium-Brown-Stain/L40708000001000-00-500x500.jpg",
+        "name": "Fender FA-15 3/4 Steel, Wood",
+        "originalPrice": 56,
+        "resalePrice": 40,
+        "location": "Cantonment, Cumilla",
+        "yearsOfUse": 1,
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb3",
+        "img": "https://www.guitaroctave.com/wb/wp-content/uploads/2022/01/Sqoe-SQ-EC-FG-acoustic-guitar-price-in-bd-02.webp",
+        "name": "Octave Guiter UUY-15 , Black",
+        "originalPrice": 78,
+        "resalePrice": 55,
+        "location": "Kandirpar, Cumilla",
+        "yearsOfUse": 1,
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electro-acoustic",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb4",
+        "img": "https://www.guitaroctave.com/wb/wp-content/uploads/2022/08/Tanglewood-TWBB-SFC-E-electro-acoustic-guitar-price-in-BD-01.webp",
+        "name": "Octave Electro Acoustic Steel, Black",
+        "originalPrice": 74,
+        "resalePrice": 48,
+        "location": "Cantonment Cumilla",
+        "yearsOfUse": 1,
+        "salePostDate": "24 November, 2022"
+    },
+    {
+        "categoryName": "electric",
+        "categoryId": "637f2d6ffb4164d5ed1bbbb5",
+        "img": "https://diamu.com.bd/wp-content/uploads/2018/07/Ibanez-GRG-150-DX-Electric-Guitar.jpg",
+        "name": "Black Horse Electric Guiter",
+        "originalPrice": 150,
+        "resalePrice": 120,
+        "location": "Cantonment Cumilla",
+        "yearsOfUse": 1,
+        "salePostDate": "24 November, 2022"
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Acoustic Guitars",
+        "img": "https://images.pexels.com/photos/2021348/pexels-photo-2021348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "banner_img": "https://images.pexels.com/photos/3428498/pexels-photo-3428498.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "description": "An acoustic guitar is a musical instrument in the string family. ",
+        "title": "Get Honey Sound With Accoustic Guitars"
+    },
+    {
+        "name": "Electro-acoustic Guitars",
+        "img": "https://images.pexels.com/photos/2257558/pexels-photo-2257558.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "banner_img": "https://images.pexels.com/photos/1164763/pexels-photo-1164763.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "description": "Enjoy the lowest prices and best selection of Acoustic-Electric Guitars at GuitarStore. Most orders are eligible for free shipping. ",
+        "title": "Great for live performances - Electro Accoustic"
+    },
+    {
+        "name": "Electric Guitars",
+        "img": "https://images.pexels.com/photos/5396357/pexels-photo-5396357.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "banner_img": "https://images.pexels.com/photos/3769099/pexels-photo-3769099.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "description": "Enjoy the lowest prices and best selection of Electric Guitars at GuitarStore. Most orders are eligible for free shipping. ",
+        "title": "Premium Electric Guitars."
+    }
+]
