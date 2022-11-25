@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthProvider } from "../../../Context/AuthContext";
 
-const ProductBookModal = ({ product }) => {
+const ProductBookModal = ({ signleProduct }) => {
   const { user } = useContext(AuthProvider);
   const date = new Date();
   const bookingDate = format(date, "Pp");
@@ -21,12 +21,15 @@ const ProductBookModal = ({ product }) => {
     useTime,
     sellerName,
     categoryName,
-  } = product;
+  } = signleProduct;
+
+  console.log(img);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const guiterName = form.guitar_name.value;
+    const img = form.img_url.value;
     const categoryName = form.category_name.value;
     const sellerName = form.seller_name.value;
     const price = form.price.value;
@@ -38,6 +41,7 @@ const ProductBookModal = ({ product }) => {
       guiterName,
       categoryName,
       sellerName,
+      img,
       price,
       userName,
       userEmail,
@@ -46,6 +50,7 @@ const ProductBookModal = ({ product }) => {
     );
     const bookingInfo = {
       guiterName,
+      img,
       categoryName,
       sellerName,
       price,
@@ -93,6 +98,18 @@ const ProductBookModal = ({ product }) => {
                 type="text"
                 name="guitar_name"
                 defaultValue={name}
+                disabled
+                className="input  font-semibold input-bordered input-primary w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Guitar Image URL</span>
+              </label>
+              <input
+                type="url"
+                name="img_url"
+                defaultValue={img}
                 disabled
                 className="input  font-semibold input-bordered input-primary w-full "
               />

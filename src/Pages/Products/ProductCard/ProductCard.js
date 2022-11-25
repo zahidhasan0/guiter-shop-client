@@ -2,7 +2,7 @@ import React from "react";
 import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
 import ProductBookModal from "../ProductBookModal/ProductBookModal";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setSingleProduct }) => {
   const {
     _id,
     name,
@@ -14,6 +14,7 @@ const ProductCard = ({ product }) => {
     useTime,
     sellerName,
   } = product;
+
   return (
     <div>
       <div className="card  bg-base-100 shadow-lg">
@@ -31,6 +32,7 @@ const ProductCard = ({ product }) => {
           <p>Post on : {salePostDate}</p>
           <div className="card-actions justify-end">
             <label
+              onClick={() => setSingleProduct(product)}
               htmlFor="product-book-modal"
               className="btn btn-primary btn-sm"
             >
@@ -39,7 +41,6 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
-      <ProductBookModal product={product}></ProductBookModal>
     </div>
   );
 };

@@ -31,12 +31,10 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const googleSignUp = () => {
-    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const logOut = () => {
-    setLoading(true);
     return signOut(auth);
   };
 
@@ -50,7 +48,6 @@ const AuthContext = ({ children }) => {
   }, []);
 
   const updateUserProfile = (user) => {
-    setLoading(true);
     return updateProfile(auth.currentUser, user);
   };
 
