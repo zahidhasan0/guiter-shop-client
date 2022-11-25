@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { AuthProvider } from "../Context/AuthContext";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthProvider);
+  console.log(user);
   return (
     <div>
       <Navbar />
@@ -33,26 +36,32 @@ const DashboardLayout = () => {
       </div>
       <div className="drawer drawer-mobile">
         <input id="dashboardDrawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content ">
           <Outlet />
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
           <ul className="menu  w-48 bg-base-100 text-base-content">
+            {user && user.role === "buyer" && (
+              <li>
+                <Link to="/dashboard/myorders">My Orders</Link>
+              </li>
+            )}
+            {user && user.role === "seller" && (
+              <>
+                <li>
+                  <Link to="/dashboard/addproduct">Add A Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myproducts">My Products</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/mybuyers">My Buyers</Link>
+                </li>
+              </>
+            )}
             <li>
-              <Link to="/dashboard/myorders">My Orders</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/addproduct">Add A Product</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myproducts">My Products</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/mybuyers">My Buyers</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/allseller">All Seller</Link>
+              <Link to="/dashboard/allsellers">All Seller</Link>
             </li>
             <li>
               <Link to="/dashboard/allbuyers">All Buyers</Link>
