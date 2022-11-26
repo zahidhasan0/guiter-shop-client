@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
 
 const AllSeller = () => {
   const { data: allSeller = [] } = useQuery({
@@ -22,16 +23,27 @@ const AllSeller = () => {
             <th></th>
             <th>Name</th>
             <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Make Admin</th>
+            <th>Delete Seller</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
+          {allSeller &&
+            allSeller.map((seller, i) => (
+              <tr>
+                <th>{i + 1}</th>
+                <td>{seller.name}</td>
+                <td>{seller.email}</td>
+                <td>
+                  <PrimaryButton>admin</PrimaryButton>
+                </td>
+                <td>
+                  <button className="btn btn-error btn-sm text-white">
+                    delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
