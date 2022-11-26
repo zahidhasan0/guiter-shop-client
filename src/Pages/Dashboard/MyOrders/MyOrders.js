@@ -26,7 +26,7 @@ const MyOrders = () => {
   console.log(orders);
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="overflow-x-auto my-6 w-full">
       <table className="table w-full">
         <thead>
           <tr className="font-bold">

@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { FaGuitar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../../Context/AuthContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthProvider);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.error(error));
+    navigate("/");
   };
   const menuItem = (
     <>

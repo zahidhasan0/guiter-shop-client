@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import Loader from "../../../Components/Loader/Loader";
 import { AuthProvider } from "../../../Context/AuthContext";
 
@@ -21,8 +22,27 @@ const MyProducts = () => {
   });
   console.log(myProducts);
 
+  const handleAddAd = (product) => {
+    console.log(product);
+    fetch("http://localhost:5000/advertise", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          console.log(data);
+          toast.success("Product added in advertise successfully");
+        }
+      });
+  };
+
   return (
-    <div>
+    <div className="my-6">
       <h3 className="text-2xl text-primary font-bold">My Products</h3>
       <table className="table w-full">
         <thead>
@@ -64,7 +84,12 @@ const MyProducts = () => {
                   <button className="btn btn-primary btn-xs">Available</button>
                 </td>
                 <th>
-                  <button className="btn btn-primary btn-xs">Add in Ad.</button>
+                  <button
+                    onClick={() => handleAddAd(product)}
+                    className="btn btn-primary btn-xs"
+                  >
+                    Add in Ad.
+                  </button>
                 </th>
               </tr>
             ))}

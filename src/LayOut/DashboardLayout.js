@@ -2,20 +2,21 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthProvider } from "../Context/AuthContext";
 import useAdmin from "../Hooks/useAdmin";
+import useBuyer from "../Hooks/useBuyer";
+import useSeller from "../Hooks/useSeller";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthProvider);
 
   const [isAdmin] = useAdmin(user?.email);
-  console.log(user);
+  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
+
   return (
     <div>
       <Navbar />
       <div className="flex justify-between items-center">
-        <h3 className="text-2xl text-center font-bold text-primary border-b-4 border-primary pb-2 w-32 mt-6">
-          Dashboard
-        </h3>
         <label
           htmlFor="dashboardDrawer"
           tabIndex={0}
@@ -44,19 +45,30 @@ const DashboardLayout = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
+
           <ul className="menu  w-48 bg-base-100 text-base-content">
-            <li>
-              <Link to="/dashboard/myorders">My Orders</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/addproduct">Add A Product</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myproducts">My Products</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/mybuyers">My Buyers</Link>
-            </li>
+            <h3 className="text-2xl text-center font-bold text-primary border-b-4 border-primary pb-2 w-32 mt-6">
+              Dashboard
+            </h3>
+            {isBuyer && (
+              <li>
+                <Link to="/dashboard/myorders">My Orders</Link>
+              </li>
+            )}
+            {isSeller && (
+              <>
+                <li>
+                  <Link to="/dashboard/addproduct">Add A Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myproducts">My Products</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/mybuyers">My Buyers</Link>
+                </li>
+              </>
+            )}
+
             {isAdmin && (
               <>
                 <li>

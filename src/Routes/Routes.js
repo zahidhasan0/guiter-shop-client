@@ -11,7 +11,11 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Products from "../Pages/Products/Products";
 import SignUp from "../Pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
+
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -50,31 +54,59 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/myorders",
-        element: <MyOrders />,
+        element: (
+          <BuyerRoute>
+            <MyOrders />
+          </BuyerRoute>
+        ),
       },
       {
         path: "/dashboard/addproduct",
-        element: <AddProduct />,
+        element: (
+          <SellerRoute>
+            <AddProduct />
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myproducts",
-        element: <MyProducts />,
+        element: (
+          <SellerRoute>
+            <MyProducts />
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/mybuyers",
-        element: <MyBuyers />,
+        element: (
+          <SellerRoute>
+            <MyBuyers />
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/allsellers",
-        element: <AllSeller />,
+        element: (
+          <AdminRoute>
+            <AllSeller />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allbuyers",
-        element: <AllBuyers />,
+        element: (
+          <AdminRoute>
+            <AllBuyers />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/reporteditems",
-        element: <ReportedItems />,
+        element: (
+          <AdminRoute>
+            <ReportedItems />
+          </AdminRoute>
+        ),
       },
     ],
   },
