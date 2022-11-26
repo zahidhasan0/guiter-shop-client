@@ -1,12 +1,15 @@
 import { format } from "date-fns";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../../Context/AuthContext";
 
 const AddProduct = () => {
   const [categoryId, setCategoryId] = useState("");
   const { register, handleSubmit } = useForm();
+
+  const { user } = useContext(AuthProvider);
 
   const navigate = useNavigate();
   const imgHostKey = process.env.REACT_APP_imgbbKey;
@@ -26,8 +29,9 @@ const AddProduct = () => {
       productCondition: data.productCondition,
       description: data.description,
       useTime: data.useTime,
-      sellerName: data.sellerName,
+      sellerName: user?.displayName,
       salePostDate: postDate,
+      sellerEmail: user?.email,
     };
 
     fetch("http://localhost:5000/allproducts", {
@@ -50,18 +54,6 @@ const AddProduct = () => {
     <div className="w-1/2 mx-auto my-12">
       <h3 className="text-2xl font-bold text-primary">Add a Product</h3>
       <form onSubmit={handleSubmit(handleAddProduct)}>
-        <div className="form-control w-full ">
-          <label className="label">
-            <span className="label-text">Your Name</span>
-          </label>
-          <input
-            type="text"
-            {...register("sellerName", {
-              required: "Input your",
-            })}
-            className="input input-bordered w-full "
-          />
-        </div>
         <div className="form-control w-full ">
           <label className="label">
             <span className="label-text">Product Name</span>
