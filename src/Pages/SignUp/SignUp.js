@@ -4,16 +4,24 @@ import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
+import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
   const [userRole, setUserRole] = useState({ role: "buyer" });
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+  const navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+  }
   const { signup, googleSignUp, updateUserProfile } = useContext(AuthProvider);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   const handleBuyerOption = () => {
     setUserRole({ role: "buyer" });
@@ -30,29 +38,17 @@ const SignUp = () => {
       .then((result) => {
         const currentUser = result.user;
         console.log(currentUser);
-        updateUserProfile({
-          displayName: data.name,
-        });
         const user = {
           name: data.name,
           email: currentUser.email,
           role: role,
         };
-        console.log(user);
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.acknowledged) {
-              toast.success(`Successfully created ${role} user.`);
-              navigate("/");
-            }
-          });
+
+        updateUserProfile(user)
+          .then(() => {
+            savedUser(user);
+          })
+          .catch((error) => console.error(error));
       })
       .catch((error) => console.error(error));
   };
@@ -61,7 +57,6 @@ const SignUp = () => {
     googleSignUp()
       .then((result) => {
         const currentUser = result.user;
-
         const user = {
           name: currentUser.displayName,
           email: currentUser.email,
@@ -85,6 +80,35 @@ const SignUp = () => {
       })
       .catch((error) => console.error(error));
   };
+
+  const savedUser = (user) => {
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success(`Successfully created ${role} user.`);
+          setCreatedUserEmail(user.email);
+        }
+      });
+  };
+
+  // const getUserToken = (email) => {
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.accessToken) {
+  //         localStorage.setItem("accessToken", data.accessToken);
+  //         navigate("/");
+  //       }
+  //     });
+  // };
+
   return (
     <div className="md:w-2/5 mx-auto my-12 shadow-xl border p-10">
       <h3 className="text-2xl font-bold text-center text-primary mb-5">

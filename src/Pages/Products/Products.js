@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Loader from "../../Components/Loader/Loader";
+
+import { AuthProvider } from "../../Context/AuthContext";
 import ProductBookModal from "./ProductBookModal/ProductBookModal";
 import ProductCard from "./ProductCard/ProductCard";
 
 const Products = () => {
-  const [signleProduct, setSingleProduct] = useState({});
+  const [signleProduct, setSingleProduct] = useState(null);
   const products = useLoaderData();
-  console.log(signleProduct);
+  const { user } = useContext(AuthProvider);
+
+  console.log(products);
   return (
     <div>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
@@ -22,7 +26,12 @@ const Products = () => {
             </ProductCard>
           ))}
       </div>
-      <ProductBookModal signleProduct={signleProduct}></ProductBookModal>
+      {signleProduct && (
+        <ProductBookModal
+          signleProduct={signleProduct}
+          setSingleProduct={setSingleProduct}
+        ></ProductBookModal>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthProvider } from "../../../Context/AuthContext";
 
-const ProductBookModal = ({ signleProduct }) => {
+const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
   const { user } = useContext(AuthProvider);
   const date = new Date();
   const bookingDate = format(date, "Pp");
@@ -11,7 +11,6 @@ const ProductBookModal = ({ signleProduct }) => {
   console.log(bookingDate);
 
   const {
-    _id,
     name,
     img,
     originalPrice,
@@ -72,6 +71,7 @@ const ProductBookModal = ({ signleProduct }) => {
         if (data.acknowledged) {
           toast.success("The guiter is booked");
           console.log(data);
+          setSingleProduct(null);
         }
       });
   };
@@ -146,7 +146,7 @@ const ProductBookModal = ({ signleProduct }) => {
               <input
                 type="text"
                 name="price"
-                defaultValue={`$${resalePrice}`}
+                defaultValue={resalePrice}
                 disabled
                 className="input font-semibold input-bordered input-primary w-full "
               />

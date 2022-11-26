@@ -1,23 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Components/PrimaryButton/PrimaryButton";
 import { AuthProvider } from "../../Context/AuthContext";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const { login, googleSignUp, error, setError } = useContext(AuthProvider);
+  const [loginEmail, setLoginEmail] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+  const [token] = useToken(loginEmail);
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const location = useLocation();
-  const navigate = useNavigate();
-  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (data) => {
     console.log(data);
@@ -26,7 +31,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
-        navigate(from, { replace: true });
+        setLoginEmail(data.email);
       })
       .catch((error) => {
         setError(error.message);
@@ -37,7 +42,7 @@ const Login = () => {
     googleSignUp()
       .then((result) => {
         const currentUser = result.user;
-
+        setLoginEmail(currentUser.email);
         const user = {
           name: currentUser.displayName,
           email: currentUser.email,

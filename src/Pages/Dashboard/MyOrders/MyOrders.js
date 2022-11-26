@@ -29,7 +29,7 @@ const MyOrders = () => {
     <div className="overflow-x-auto w-full">
       <table className="table w-full">
         <thead>
-          <tr>
+          <tr className="font-bold">
             <th>Index</th>
             <th>Image</th>
             <th>Title</th>
@@ -40,7 +40,7 @@ const MyOrders = () => {
         <tbody>
           {orders &&
             orders.map((order, i) => (
-              <tr key={order._id}>
+              <tr className="font-semibold" key={order._id}>
                 <th>{i + 1}</th>
                 <td>
                   <div className="flex items-center space-x-3">
@@ -58,7 +58,7 @@ const MyOrders = () => {
                   {order.guiterName}
                   <br />
                 </td>
-                <td>{order.price}</td>
+                <td>${order.price}</td>
                 <th>
                   <button className="btn btn-ghost btn-xs">details</button>
                 </th>
