@@ -19,7 +19,7 @@ const Banner = () => {
     lazyLoad: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 30000,
     cssEase: "linear",
     speed: 500,
     slidesToShow: 1,

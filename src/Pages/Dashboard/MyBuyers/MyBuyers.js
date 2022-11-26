@@ -11,6 +11,17 @@ const MyBuyers = () => {
       return data;
     },
   });
+
+  const handleMakeAdmin = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -22,7 +33,7 @@ const MyBuyers = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
+              <th>Email</th>
               <th>Make Admin</th>
               <th>Delete Buyer</th>
             </tr>
@@ -30,12 +41,17 @@ const MyBuyers = () => {
           <tbody>
             {allBuyer &&
               allBuyer.map((buyer, i) => (
-                <tr>
+                <tr key={i}>
                   <th>{i + 1}</th>
                   <td>{buyer.name}</td>
                   <td>{buyer.email}</td>
                   <td>
-                    <PrimaryButton>admin</PrimaryButton>
+                    <button
+                      onClick={() => handleMakeAdmin(buyer?._id)}
+                      className="btn btn-primary btn-sm text-white"
+                    >
+                      admin
+                    </button>
                   </td>
                   <td>
                     <button className="btn btn-error btn-sm text-white">
