@@ -36,16 +36,16 @@ Your website has to be related to selling used (second-hand products) with the a
    <!-- -->
 
 <!-- 8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.  -->
+<!--
+9. On the **"My Products"** page, sellers can delete sales status (available or sold), price, and any other relevant information they want to show. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise. -->
 
-9. On the **"My Products"** page, sellers can delete sales status (available or sold), price, and any other relevant information they want to show. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
-
-10. The advertised items will appear on the home page. Please note if there are no items marked as advertised, the advertised items section won't be displayed on the home page. The advertised section will only appear if there is one or more available (unsold items) are marked to be advertised.
+<!-- 10. The advertised items will appear on the home page. Please note if there are no items marked as advertised, the advertised items section won't be displayed on the home page. The advertised section will only appear if there is one or more available (unsold items) are marked to be advertised. -->
 
 11. " **My buyers" are optional.** See the optional section for details. On this page, a seller will see the buyer's phone, name, email address, and location.
 
 <!-- 12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers. -->
 
-13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
+<!-- 13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
 
     13.1 What are the different ways to manage a state in a React application?
 
@@ -53,7 +53,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
     13.3 What is a unit test? Why should we write unit tests?
 
-    13.4 React vs. Angular vs. Vue?
+    13.4 React vs. Angular vs. Vue? -->
 
 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
@@ -63,7 +63,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 1. Your Readme file for the client-side repo should have details about your project's features and functionalities in bullet points(at least five bullet points) and your live link. Adding a meaningful readme file for the server-side repo is optional.
 
-2. At least 16 meaningful GitHub commits for the client side and 9 meaningful commits for the server-side repository. Your code should be clean and organized. Comments should be added where necessary
+<!-- 2. At least 16 meaningful GitHub commits for the client side and 9 meaningful commits for the server-side repository. Your code should be clean and organized. Comments should be added where necessary -->
 
 3. Add a meaningful favicon. If data is loading, a spinner will be displayed. When you are loading data by using a loader, make sure you have added a route.
 
@@ -79,11 +79,11 @@ Your website has to be related to selling used (second-hand products) with the a
 
    Once an item is paid, it won't be displayed on the advertised item or on the category page. Only available items will be displayed to be purchased.
 
-8. Use react query for at least two API calls.Use Axios for at least one API call
+<!-- 8. Use react query for at least two API calls.Use Axios for at least one API call -->
 
-9. Most likely framework will do it for you. However do not forget to make your entire website responsive. (It is ok if the table is not responsive.) please note, all the pages including dashboard will be responsive.
+<!-- 9. Most likely framework will do it for you. However do not forget to make your entire website responsive. (It is ok if the table is not responsive.) please note, all the pages including dashboard will be responsive. -->
 
-10. Database collection names, routes, mongdb features/operators when needed, api naming convension and best practices.
+<!-- 10. Database collection names, routes, mongdb features/operators when needed, api naming convension and best practices. -->
 
 ### Optional
 

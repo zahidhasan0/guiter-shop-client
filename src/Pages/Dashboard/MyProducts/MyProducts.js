@@ -8,7 +8,7 @@ const MyProducts = () => {
   const { user } = useContext(AuthProvider);
   console.log(user);
 
-  const { data: myProducts = [] } = useQuery({
+  const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProducts", user?.email],
     queryFn: async () => {
       if (user) {
@@ -41,6 +41,21 @@ const MyProducts = () => {
       });
   };
 
+  const handleStatus = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/myproducts/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
+
   return (
     <div className="my-6">
       <h3 className="text-2xl text-primary font-bold">My Products</h3>
@@ -51,7 +66,7 @@ const MyProducts = () => {
             <th>Image</th>
             <th>Title</th>
             <th>Price</th>
-            <th></th>
+            <th>status</th>
             <th></th>
           </tr>
         </thead>
@@ -81,7 +96,21 @@ const MyProducts = () => {
                   <br />
                 </td>
                 <td>
-                  <button className="btn btn-primary btn-xs">Available</button>
+                  {product.status === "sold" ? (
+                    <button
+                      onClick={() => handleStatus(product._id)}
+                      className="btn btn-primary btn-xs"
+                    >
+                      Sold
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleStatus(product._id)}
+                      className="btn btn-primary btn-xs"
+                    >
+                      Available
+                    </button>
+                  )}
                 </td>
                 <th>
                   <button

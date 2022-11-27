@@ -1,6 +1,5 @@
 import React from "react";
 import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
-import ProductBookModal from "../ProductBookModal/ProductBookModal";
 
 const ProductCard = ({ product, setSingleProduct }) => {
   const {

@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const AdvertiseCard = ({ advertise, handleAdBook }) => {
-  const { img, name, resalePrice, yearsOfUse, location, categoryId } =
-    advertise;
+const AdvertiseCard = ({ advertise, setProduct }) => {
+  const { img, name, resalePrice, yearsOfUse, location } = advertise;
   return (
     <div className="card  h-[350px] bg-base-100 shadow-xl image-full">
       <figure>
@@ -18,13 +16,13 @@ const AdvertiseCard = ({ advertise, handleAdBook }) => {
         </div>
 
         <div className="card-actions mt-5 justify-end">
-          <button
-            onClick={() => handleAdBook(advertise)}
-            htmlFor="product-book-modal"
-            className="btn btn-primary"
+          <label
+            onClick={() => setProduct(advertise)}
+            htmlFor="advertiseModal"
+            className="btn btn-primary btn-sm"
           >
             Book Now
-          </button>
+          </label>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="font-semibold">
-        <Link to="/">About</Link>
+        <Link to="/blogs">Blogs</Link>
       </li>
 
       {user?.uid ? (
@@ -43,8 +43,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <div className="navbar bg-base-100 flex justify-between ">
+      <div className="navbar-start  ">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -78,7 +78,6 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
-      <div></div>
     </div>
   );
 };

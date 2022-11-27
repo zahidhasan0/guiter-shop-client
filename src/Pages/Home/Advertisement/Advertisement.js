@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import Slider from "react-slick";
+
 import { AuthProvider } from "../../../Context/AuthContext";
-import ProductBookModal from "../../Products/ProductBookModal/ProductBookModal";
+
 import AdvertiseCard from "./AdvertiseCard/AdvertiseCard";
+import AdvertiseModal from "./AdvertiseModal/AdvertiseModal";
 
 const Advertisement = () => {
-  const { signleProduct, setSingleProduct } = useContext(AuthProvider);
+  const [product, setProduct] = useState(null);
   const { data: advertises = [], refetch } = useQuery({
     queryKey: ["advertises"],
     queryFn: async () => {
@@ -45,26 +46,33 @@ const Advertisement = () => {
 
   return (
     <>
-      {advertises.length && (
-        <>
+      {advertises.length > 0 && (
+        <div className="mt-12">
           <div>
-            <h3 className="text-3xl font-bold">Most Seller In this Week</h3>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {advertises &&
-                advertises.map((advertise) => (
-                  <AdvertiseCard
-                    key={advertise._id}
-                    handleAdBook={handleAdBook}
-                    advertise={advertise}
-                  ></AdvertiseCard>
-                ))}
+            <div>
+              <h3 className="text-3xl font-bold mb-6">
+                Most Seller In this Week
+              </h3>
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                {advertises &&
+                  advertises.map((advertise) => (
+                    <AdvertiseCard
+                      key={advertise._id}
+                      setProduct={setProduct}
+                      handleAdBook={handleAdBook}
+                      advertise={advertise}
+                    ></AdvertiseCard>
+                  ))}
+              </div>
             </div>
           </div>
-          <ProductBookModal
-            signleProduct={signleProduct}
-            setSingleProduct={setSingleProduct}
-          ></ProductBookModal>
-        </>
+          {product && (
+            <AdvertiseModal
+              product={product}
+              setProduct={setProduct}
+            ></AdvertiseModal>
+          )}
+        </div>
       )}
     </>
   );

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import CategoryCard from "./CategoryCard/CategoryCard";
 
-const Categories = () => {
+const Categories = ({ signleProduct, setSingleProduct }) => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {

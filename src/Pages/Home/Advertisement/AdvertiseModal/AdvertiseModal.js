@@ -1,17 +1,15 @@
 import { format } from "date-fns";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { AuthProvider } from "../../../Context/AuthContext";
+import { AuthProvider } from "../../../../Context/AuthContext";
 
-const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
+const AdvertiseModal = ({ product, setProduct }) => {
   const { user } = useContext(AuthProvider);
   const date = new Date();
   const bookingDate = format(date, "Pp");
-
-  console.log(signleProduct);
-
   const {
     name,
+    _id,
     img,
     originalPrice,
     resalePrice,
@@ -20,11 +18,10 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
     useTime,
     sellerName,
     categoryName,
-  } = signleProduct;
+  } = product;
+  console.log(product);
 
-  console.log(img);
-
-  const handleSubmit = (event) => {
+  const handleAdBook = (event) => {
     event.preventDefault();
     const form = event.target;
     const guiterName = form.guitar_name.value;
@@ -36,17 +33,6 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
     const userEmail = form.user_email.value;
     const meetingLocation = form.location.value;
     const userPhone = form.phone.value;
-    console.log(
-      guiterName,
-      categoryName,
-      sellerName,
-      img,
-      price,
-      userName,
-      userEmail,
-      meetingLocation,
-      userPhone
-    );
     const bookingInfo = {
       guiterName,
       img,
@@ -70,18 +56,30 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("The guiter is booked");
+          handleDeleteFromAd(_id);
           console.log(data);
-          setSingleProduct(null);
+          setProduct(null);
         }
       });
   };
+
+  const handleDeleteFromAd = (id) => {
+    fetch(`http://localhost:5000/advertise/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
     <div>
-      <input type="checkbox" id="product-book-modal" className="modal-toggle" />
+      <input type="checkbox" id="advertiseModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="product-book-modal"
+            htmlFor="advertiseModal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
@@ -89,7 +87,7 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
           <h3 className="text-2xl font-semibold border-b-4 border-primary text-center pb-4 text-primary">
             Booking Informations
           </h3>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleAdBook}>
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text">Guitar Name</span>
@@ -140,59 +138,56 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
                 className="input font-semibold input-bordered input-primary w-full "
               />
             </div>
-            {user && (
-              <>
-                <div className="form-control w-full ">
-                  <label className="label">
-                    <span className="label-text">Your Name</span>
-                  </label>
-                  <input
-                    type="text"
-                    defaultValue={user.displayName}
-                    required
-                    name="user_name"
-                    className="input font-semibold input-bordered input-primary w-full "
-                  />
-                </div>
-                <div className="form-control w-full ">
-                  <label className="label">
-                    <span className="label-text">Your Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="user_email"
-                    defaultValue={user.email}
-                    disabled
-                    className="input font-semibold input-bordered input-primary w-full "
-                  />
-                </div>
-                <div className="form-control w-full ">
-                  <label className="label">
-                    <span className="label-text">Meeting Location</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="location"
-                    required
-                    placeholder="Enter Meeting Location"
-                    className="input input-bordered input-primary w-full "
-                  />
-                </div>
-                <div className="form-control w-full ">
-                  <label className="label">
-                    <span className="label-text">Your Phone Number</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    required
-                    placeholder="Enter Your Phone Number"
-                    className="input input-bordered input-primary w-full "
-                  />
-                </div>
-              </>
-            )}
 
+            <>
+              <div className="form-control w-full ">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  name="user_name"
+                  className="input font-semibold input-bordered input-primary w-full "
+                />
+              </div>
+              <div className="form-control w-full ">
+                <label className="label">
+                  <span className="label-text">Your Email</span>
+                </label>
+                <input
+                  type="email"
+                  name="user_email"
+                  defaultValue={user?.email}
+                  disabled
+                  className="input font-semibold input-bordered input-primary w-full "
+                />
+              </div>
+              <div className="form-control w-full ">
+                <label className="label">
+                  <span className="label-text">Meeting Location</span>
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  required
+                  placeholder="Enter Meeting Location"
+                  className="input input-bordered input-primary w-full "
+                />
+              </div>
+              <div className="form-control w-full ">
+                <label className="label">
+                  <span className="label-text">Your Phone Number</span>
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  required
+                  placeholder="Enter Your Phone Number"
+                  className="input input-bordered input-primary w-full "
+                />
+              </div>
+            </>
             <button
               type="submit"
               className="btn btn-primary text-white font-bold mt-4 w-full"
@@ -206,4 +201,4 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
   );
 };
 
-export default ProductBookModal;
+export default AdvertiseModal;
