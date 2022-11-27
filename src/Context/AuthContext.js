@@ -18,6 +18,7 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [signleProduct, setSingleProduct] = useState(null);
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -53,6 +54,8 @@ const AuthContext = ({ children }) => {
 
   const authInfo = {
     user,
+    signleProduct,
+    setSingleProduct,
     signup,
     login,
     googleSignUp,

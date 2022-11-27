@@ -3,12 +3,12 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthProvider } from "../../../Context/AuthContext";
 
-const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
-  const { user } = useContext(AuthProvider);
+const ProductBookModal = () => {
+  const { user, signleProduct, setSingleProduct } = useContext(AuthProvider);
   const date = new Date();
   const bookingDate = format(date, "Pp");
 
-  console.log(bookingDate);
+  console.log(signleProduct);
 
   const {
     name,
@@ -114,18 +114,7 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
                 className="input  font-semibold input-bordered input-primary w-full "
               />
             </div>
-            <div className="form-control w-full ">
-              <label className="label">
-                <span className="label-text">Guitar Category </span>
-              </label>
-              <input
-                type="text"
-                defaultValue={categoryName}
-                disabled
-                name="category_name"
-                className="input font-semibold input-bordered input-primary w-full "
-              />
-            </div>
+
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text">Seller Name</span>
@@ -160,7 +149,7 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
                   <input
                     type="text"
                     defaultValue={user.displayName}
-                    disabled
+                    required
                     name="user_name"
                     className="input font-semibold input-bordered input-primary w-full "
                   />

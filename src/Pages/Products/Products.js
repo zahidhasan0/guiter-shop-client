@@ -7,9 +7,8 @@ import ProductBookModal from "./ProductBookModal/ProductBookModal";
 import ProductCard from "./ProductCard/ProductCard";
 
 const Products = () => {
-  const [signleProduct, setSingleProduct] = useState(null);
   const products = useLoaderData();
-  const { user } = useContext(AuthProvider);
+  const { user, signleProduct, setSingleProduct } = useContext(AuthProvider);
 
   console.log(products);
   return (

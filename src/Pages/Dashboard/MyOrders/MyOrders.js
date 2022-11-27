@@ -60,7 +60,7 @@ const MyOrders = () => {
                 </td>
                 <td>${order.price}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <button className="btn btn-primary btn-xs">Pay</button>
                 </th>
               </tr>
             ))}
