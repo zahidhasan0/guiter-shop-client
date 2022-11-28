@@ -1,14 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../Components/Loader/Loader";
+import { AuthProvider } from "../../../Context/AuthContext";
 import ProductBookModal from "../../Products/ProductBookModal/ProductBookModal";
 
 const Wishlist = () => {
+  const { user } = useContext(AuthProvider);
   const { data: wishlist, isLoading } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
-      const res = await fetch("https://guitar-shop-server.vercel.app/wishlist");
+      const res = await fetch(
+        `https://guitar-shop-server.vercel.app/wishlist?email=${user.email}`
+      );
       const data = res.json();
       return data;
     },

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheckCircle, FaHeart, FaRegCheckCircle } from "react-icons/fa";
+import { AuthProvider } from "../../../Context/AuthContext";
 
 const ProductCard = ({ product, setSingleProduct }) => {
+  const { user } = useContext(AuthProvider);
   const [isWishListed, setIsWishListed] = useState(false);
   const {
     _id,
@@ -26,6 +28,7 @@ const ProductCard = ({ product, setSingleProduct }) => {
     salePostDate,
     useTime,
     sellerName,
+    email: user.email,
   };
 
   const handleWishlist = (product) => {
