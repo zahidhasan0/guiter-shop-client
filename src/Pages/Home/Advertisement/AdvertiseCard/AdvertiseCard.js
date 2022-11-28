@@ -1,6 +1,9 @@
-import React from "react";
+import userEvent from "@testing-library/user-event";
+import React, { useContext } from "react";
+import { AuthProvider } from "../../../../Context/AuthContext";
 
 const AdvertiseCard = ({ advertise, setProduct }) => {
+  const { user } = useContext(AuthProvider);
   const { img, name, resalePrice, yearsOfUse, location } = advertise;
   return (
     <div className="card  h-[350px] bg-base-100 shadow-xl image-full">

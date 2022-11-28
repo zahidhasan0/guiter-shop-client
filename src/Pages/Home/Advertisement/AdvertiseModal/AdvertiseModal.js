@@ -19,6 +19,7 @@ const AdvertiseModal = ({ product, setProduct }) => {
     sellerName,
     categoryName,
   } = product;
+
   console.log(product);
 
   const handleAdBook = (event) => {
@@ -45,7 +46,7 @@ const AdvertiseModal = ({ product, setProduct }) => {
       userPhone,
       bookingDate,
     };
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://guitar-shop-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -64,7 +65,7 @@ const AdvertiseModal = ({ product, setProduct }) => {
   };
 
   const handleDeleteFromAd = (id) => {
-    fetch(`http://localhost:5000/advertise/${id}`, {
+    fetch(`https://guitar-shop-server.vercel.app/advertise/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -122,7 +123,7 @@ const AdvertiseModal = ({ product, setProduct }) => {
                 name="seller_name"
                 defaultValue={sellerName}
                 disabled
-                placeholder="Guitar Name"
+                placeholder=""
                 className="input font-semibold input-bordered input-primary w-full "
               />
             </div>

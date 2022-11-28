@@ -8,8 +8,9 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <Advertisement />
       <Categories />
+      <Advertisement />
+
       <MobileApp />
     </div>
   );

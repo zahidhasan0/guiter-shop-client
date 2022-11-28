@@ -1,13 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
+import { FaCheckCircle } from "react-icons/fa";
 import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
 
 const AllSeller = () => {
   const { data: allSeller = [], refetch } = useQuery({
     queryKey: ["allseller"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allseller");
+      const res = await fetch(
+        "https://guitar-shop-server.vercel.app/allseller"
+      );
       const data = res.json();
       return data;
     },
@@ -17,7 +20,7 @@ const AllSeller = () => {
   const handleDelete = (id) => {
     const agree = window.confirm("Are you sure to delete this Seller?");
     if (agree) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://guitar-shop-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -28,6 +31,22 @@ const AllSeller = () => {
           }
         });
     }
+  };
+
+  const handleVerify = (id) => {
+    console.log(id);
+    fetch(`https://guitar-shop-server.vercel.app/users/seller/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+        toast.success("Seller verify successfull.");
+      });
   };
   return (
     <div className="overflow-x-auto mb-6">
@@ -41,8 +60,8 @@ const AllSeller = () => {
             <th></th>
             <th>Name</th>
             <th>Email</th>
-            <th>Make Admin</th>
-            <th>Varify</th>
+
+            <th>Verify</th>
             <th>Delete Seller</th>
           </tr>
         </thead>
@@ -53,11 +72,21 @@ const AllSeller = () => {
                 <th>{i + 1}</th>
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
+
                 <td>
-                  <PrimaryButton>Make admin</PrimaryButton>
-                </td>
-                <td>
-                  <PrimaryButton>Verify</PrimaryButton>
+                  {seller.status === "verify" ? (
+                    <span className="text-green-400 font-bold">
+                      {" "}
+                      <FaCheckCircle />{" "}
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => handleVerify(seller._id)}
+                      className="btn btn-primary btn-sm text-white"
+                    >
+                      Verify
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button

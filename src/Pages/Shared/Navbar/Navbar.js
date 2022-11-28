@@ -30,8 +30,6 @@ const Navbar = () => {
           <li onClick={handleLogOut} className="font-semibold">
             <Link>Log Out</Link>
           </li>
-
-          <li>{user.displayName}</li>
         </>
       ) : (
         <>

@@ -44,7 +44,9 @@ const SignUp = () => {
           role: role,
         };
 
-        updateUserProfile(user)
+        updateUserProfile({
+          displayName: data.name,
+        })
           .then(() => {
             savedUser(user);
           })
@@ -63,7 +65,7 @@ const SignUp = () => {
           role: "buyer",
         };
         console.log(user);
-        fetch("http://localhost:5000/users", {
+        fetch("https://guitar-shop-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -82,7 +84,7 @@ const SignUp = () => {
   };
 
   const savedUser = (user) => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://guitar-shop-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -99,7 +101,7 @@ const SignUp = () => {
   };
 
   // const getUserToken = (email) => {
-  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //   fetch(`https://guitar-shop-server.vercel.app/jwt?email=${email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       if (data.accessToken) {

@@ -11,14 +11,16 @@ const Advertisement = () => {
   const { data: advertises = [], refetch } = useQuery({
     queryKey: ["advertises"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertise");
+      const res = await fetch(
+        "https://guitar-shop-server.vercel.app/advertise"
+      );
       const data = res.json();
       return data;
     },
   });
 
   const handleAdBook = (handleBook) => {
-    fetch(`http://localhost:5000/bookings`, {
+    fetch(`https://guitar-shop-server.vercel.app/bookings`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +35,7 @@ const Advertisement = () => {
   };
 
   const handleAdDelete = (handleBook) => {
-    fetch(`http://localhost:5000/advertise/${handleBook._id}`, {
+    fetch(`https://guitar-shop-server.vercel.app/advertise/${handleBook._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -50,7 +52,7 @@ const Advertisement = () => {
         <div className="mt-12">
           <div>
             <div>
-              <h3 className="text-3xl font-bold mb-6">
+              <h3 className="text-3xl text-primary font-bold mb-6">
                 Most Seller In this Week
               </h3>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

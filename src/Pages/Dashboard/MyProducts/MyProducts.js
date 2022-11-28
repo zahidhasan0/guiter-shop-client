@@ -13,7 +13,7 @@ const MyProducts = () => {
     queryFn: async () => {
       if (user) {
         const res = await fetch(
-          `http://localhost:5000/myproducts?email=${user?.email}`
+          `https://guitar-shop-server.vercel.app/myproducts?email=${user?.email}`
         );
         const data = res.json();
         return data;
@@ -24,7 +24,7 @@ const MyProducts = () => {
 
   const handleAddAd = (product) => {
     console.log(product);
-    fetch("http://localhost:5000/advertise", {
+    fetch("https://guitar-shop-server.vercel.app/advertise", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -43,7 +43,7 @@ const MyProducts = () => {
 
   const handleStatus = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/myproducts/${id}`, {
+    fetch(`https://guitar-shop-server.vercel.app/myproducts/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

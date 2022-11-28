@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { FaHeart } from "react-icons/fa";
+import { FaCheckCircle, FaHeart, FaRegCheckCircle } from "react-icons/fa";
 
 const ProductCard = ({ product, setSingleProduct }) => {
   const [isWishListed, setIsWishListed] = useState(false);
@@ -14,6 +14,7 @@ const ProductCard = ({ product, setSingleProduct }) => {
     salePostDate,
     useTime,
     sellerName,
+    sellerStatus,
   } = product;
 
   const wishlistProduct = {
@@ -28,7 +29,7 @@ const ProductCard = ({ product, setSingleProduct }) => {
   };
 
   const handleWishlist = (product) => {
-    fetch(`http://localhost:5000/wishlist`, {
+    fetch(`https://guitar-shop-server.vercel.app/wishlist`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,7 +55,12 @@ const ProductCard = ({ product, setSingleProduct }) => {
         <div className="card-body">
           <h2 className="card-title text-primary">{name}</h2>
 
-          <p>Seller Name : {sellerName}</p>
+          <p className="flex gap-2 items-start">
+            <span>Seller Name : {sellerName}</span>{" "}
+            <span title="varified seller" className="text-green-400 font-bold">
+              {sellerStatus && <FaCheckCircle />}
+            </span>
+          </p>
           <p>Location : {location}</p>
           <p>Use Time : {useTime}</p>
           <p>Resale Price : ${resalePrice}</p>

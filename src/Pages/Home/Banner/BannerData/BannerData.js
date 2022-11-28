@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BannerData = ({ category }) => {
   const { _id, name, banner_img, description, title } = category;
@@ -12,7 +13,10 @@ const BannerData = ({ category }) => {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">{title}</h1>
           <p className="mb-5">{description}</p>
-          <button className="btn btn-primary">Shop Now</button>
+          <Link to={`/categories/${_id}`}>
+            {" "}
+            <button className="btn btn-primary">Shop Now</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -54,7 +54,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allproducts/${params.id}`),
+          fetch(
+            `https://guitar-shop-server.vercel.app/allproducts/${params.id}`
+          ),
       },
     ],
   },
@@ -64,7 +66,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/myorders",
         element: (
           <BuyerRoute>
             <MyOrders />
@@ -79,7 +81,7 @@ export const router = createBrowserRouter([
           </BuyerRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/${params.id}`),
+          fetch(`https://guitar-shop-server.vercel.app/bookings/${params.id}`),
       },
       {
         path: "/dashboard/mywishlist",
@@ -98,7 +100,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard",
+        path: "/dashboard/myproducts",
         element: (
           <SellerRoute>
             <MyProducts />
@@ -122,7 +124,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard",
+        path: "/dashboard/allbuyers",
         element: (
           <AdminRoute>
             <AllBuyers />

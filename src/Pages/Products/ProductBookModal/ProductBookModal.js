@@ -59,7 +59,7 @@ const ProductBookModal = ({ signleProduct, setSingleProduct }) => {
       userPhone,
       bookingDate,
     };
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://guitar-shop-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

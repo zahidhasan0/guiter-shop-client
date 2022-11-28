@@ -8,6 +8,7 @@ import { AuthProvider } from "../../../Context/AuthContext";
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
+  const [sellerStatus, setSellerStatus] = useState("");
 
   const { user, loading } = useContext(AuthProvider);
 
@@ -32,11 +33,12 @@ const AddProduct = () => {
       sellerName: user?.displayName,
       salePostDate: postDate,
       sellerEmail: user?.email,
+      sellerStatus: "verified",
     };
     if (loading) {
       <Loader />;
     }
-    fetch("http://localhost:5000/allproducts", {
+    fetch("https://guitar-shop-server.vercel.app/allproducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

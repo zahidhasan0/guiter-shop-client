@@ -49,7 +49,7 @@ const Login = () => {
           role: "buyer",
         };
         console.log(user);
-        fetch("http://localhost:5000/users", {
+        fetch("https://guitar-shop-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -8,7 +8,9 @@ const Banner = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categories");
+      const res = await fetch(
+        "https://guitar-shop-server.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },
@@ -27,7 +29,7 @@ const Banner = () => {
     initialSlide: 2,
   };
   return (
-    <div className="mt-12">
+    <div className="mt-5">
       <Slider {...settings}>
         {categories &&
           categories.map((category) => (

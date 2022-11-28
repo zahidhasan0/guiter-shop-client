@@ -3,10 +3,10 @@ import React from "react";
 import toast from "react-hot-toast";
 
 const AllBuyers = () => {
-  const { data: allBuyer = [] } = useQuery({
+  const { data: allBuyer = [], refetch } = useQuery({
     queryKey: ["allbuyer"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allbuyer");
+      const res = await fetch("https://guitar-shop-server.vercel.app/allbuyer");
       const data = res.json();
       return data;
     },
@@ -14,7 +14,7 @@ const AllBuyers = () => {
 
   const handleMakeAdmin = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://guitar-shop-server.vercel.app/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -23,19 +23,21 @@ const AllBuyers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        refetch();
       });
   };
 
   const handleDelete = (id) => {
     const agree = window.confirm("Are you sure to delete this Buyer?");
     if (agree) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://guitar-shop-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) console.log(data);
           toast.success("successfully deleted the buyer");
+          refetch();
         });
     }
   };

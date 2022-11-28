@@ -14,7 +14,14 @@ const MyOrders = () => {
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders", email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings?email=${email}`);
+      const res = await fetch(
+        `https://guitar-shop-server.vercel.app/bookings?email=${email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -23,6 +30,16 @@ const MyOrders = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  const handleDelete = (id) => {
+    fetch(`https://guitar-shop-server.vercel.app/allproducts/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   console.log(orders);
 
@@ -66,7 +83,12 @@ const MyOrders = () => {
                 <td>
                   {order?.price && !order?.paid && (
                     <Link to={`/dashboard/payment/${order._id}`}>
-                      <button className="btn btn-sm ">Pay</button>
+                      <button
+                        onClick={() => handleDelete(order._id)}
+                        className="btn btn-sm "
+                      >
+                        Pay
+                      </button>
                     </Link>
                   )}
                   {order.price && order.paid && (

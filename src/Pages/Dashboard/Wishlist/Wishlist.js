@@ -5,17 +5,15 @@ import Loader from "../../../Components/Loader/Loader";
 import ProductBookModal from "../../Products/ProductBookModal/ProductBookModal";
 
 const Wishlist = () => {
-  const [singleProduct, setSingleProduct] = useState("");
   const { data: wishlist, isLoading } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/wishlist");
+      const res = await fetch("https://guitar-shop-server.vercel.app/wishlist");
       const data = res.json();
       return data;
     },
   });
 
-  console.log(singleProduct);
   if (isLoading) {
     <Loader />;
   }
@@ -31,7 +29,7 @@ const Wishlist = () => {
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Pay</th>
+            <th>Book Now</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +49,6 @@ const Wishlist = () => {
 
                 <td>
                   <label
-                    onClick={() => setSingleProduct(wishlist)}
                     htmlFor="product-book-modal"
                     className="btn btn-primary btn-sm"
                   >
@@ -62,10 +59,6 @@ const Wishlist = () => {
             ))}
         </tbody>
       </table>
-      <ProductBookModal
-        singleProduct={singleProduct}
-        setSingleProduct={setSingleProduct}
-      ></ProductBookModal>
     </div>
   );
 };
