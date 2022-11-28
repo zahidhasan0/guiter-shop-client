@@ -34,16 +34,17 @@ const AllBuyers = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-if(data.deletedCount>0)
-          
-          console.log(data);
+          if (data.deletedCount > 0) console.log(data);
           toast.success("successfully deleted the buyer");
         });
     }
   };
   return (
     <div>
-      <div className="overflow-x-auto my-6">
+      <h3 className="text-2xl font-bold text-primary border-b-4 border-primary my-6 text-center pb-2">
+        All Buyers
+      </h3>
+      <div className="overflow-x-auto mb-6">
         <h2 className="text-2xl font-semibold text-center mb-4 text-primary border-b-4 border-primary pb-2 w-1/6">
           All Buyer
         </h2>

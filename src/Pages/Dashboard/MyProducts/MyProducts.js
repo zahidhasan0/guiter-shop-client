@@ -57,8 +57,10 @@ const MyProducts = () => {
   };
 
   return (
-    <div className="my-6">
-      <h3 className="text-2xl text-primary font-bold">My Products</h3>
+    <div className="mb-6">
+      <h3 className="text-2xl font-bold text-primary border-b-4 border-primary my-6 text-center pb-2">
+        My Products
+      </h3>
       <table className="table w-full">
         <thead>
           <tr className="font-bold">

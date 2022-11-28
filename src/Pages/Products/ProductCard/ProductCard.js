@@ -1,7 +1,9 @@
-import React from "react";
-import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { FaHeart } from "react-icons/fa";
 
 const ProductCard = ({ product, setSingleProduct }) => {
+  const [isWishListed, setIsWishListed] = useState(false);
   const {
     _id,
     name,
@@ -13,6 +15,35 @@ const ProductCard = ({ product, setSingleProduct }) => {
     useTime,
     sellerName,
   } = product;
+
+  const wishlistProduct = {
+    name,
+    img,
+    originalPrice,
+    resalePrice,
+    location,
+    salePostDate,
+    useTime,
+    sellerName,
+  };
+
+  const handleWishlist = (product) => {
+    fetch(`http://localhost:5000/wishlist`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          console.log(data);
+          toast.success("Successfully added in the wishlist");
+          setIsWishListed(true);
+        }
+      });
+  };
 
   return (
     <div>
@@ -29,7 +60,19 @@ const ProductCard = ({ product, setSingleProduct }) => {
           <p>Resale Price : ${resalePrice}</p>
           <p>Original Price : ${originalPrice}</p>
           <p>Post on : {salePostDate}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions justify-around mt-3 items-center">
+            <button
+              title={
+                isWishListed
+                  ? "Already add in the wishlist"
+                  : "click to add in the wishlist"
+              }
+              disabled={isWishListed}
+              onClick={() => handleWishlist(wishlistProduct)}
+              className="text-red-600 mr-4 text-3xl"
+            >
+              <FaHeart />
+            </button>
             <label
               onClick={() => setSingleProduct(product)}
               htmlFor="product-book-modal"

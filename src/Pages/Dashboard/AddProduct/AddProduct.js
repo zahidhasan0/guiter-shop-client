@@ -3,13 +3,13 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../Components/Loader/Loader";
 import { AuthProvider } from "../../../Context/AuthContext";
 
 const AddProduct = () => {
-  const [categoryId, setCategoryId] = useState("");
   const { register, handleSubmit } = useForm();
 
-  const { user } = useContext(AuthProvider);
+  const { user, loading } = useContext(AuthProvider);
 
   const navigate = useNavigate();
   const imgHostKey = process.env.REACT_APP_imgbbKey;
@@ -33,7 +33,9 @@ const AddProduct = () => {
       salePostDate: postDate,
       sellerEmail: user?.email,
     };
-
+    if (loading) {
+      <Loader />;
+    }
     fetch("http://localhost:5000/allproducts", {
       method: "POST",
       headers: {

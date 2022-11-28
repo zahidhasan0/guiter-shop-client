@@ -2,6 +2,7 @@ import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Loader from "../../../Components/Loader/Loader";
 import { AuthProvider } from "../../../Context/AuthContext";
 
@@ -13,7 +14,7 @@ const MyOrders = () => {
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders", email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings/${email}`);
+      const res = await fetch(`http://localhost:5000/bookings?email=${email}`);
       const data = await res.json();
       return data;
     },
@@ -27,6 +28,9 @@ const MyOrders = () => {
 
   return (
     <div className="overflow-x-auto my-6 w-full">
+      <h3 className="text-2xl font-bold text-primary border-b-4 border-primary mb-5 text-center pb-2">
+        My Orders
+      </h3>
       <table className="table w-full">
         <thead>
           <tr className="font-bold">
@@ -59,9 +63,16 @@ const MyOrders = () => {
                   <br />
                 </td>
                 <td>${order.price}</td>
-                <th>
-                  <button className="btn btn-primary btn-xs">Pay</button>
-                </th>
+                <td>
+                  {order?.price && !order?.paid && (
+                    <Link to={`/dashboard/payment/${order._id}`}>
+                      <button className="btn btn-sm ">Pay</button>
+                    </Link>
+                  )}
+                  {order.price && order.paid && (
+                    <span className=" text-green-500">Paid</span>
+                  )}
+                </td>
               </tr>
             ))}
         </tbody>

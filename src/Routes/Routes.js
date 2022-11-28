@@ -7,7 +7,10 @@ import AllSeller from "../Pages/Dashboard/AllSeller/AllSeller";
 import MyBuyers from "../Pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../Pages/Dashboard/ReportedItems/ReportedItems";
+import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Products from "../Pages/Products/Products";
@@ -24,6 +27,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -41,6 +45,7 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
+
       {
         path: "/categories/:id",
         element: (
@@ -56,12 +61,31 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "/dashboard/myorders",
+        path: "/dashboard",
         element: (
           <BuyerRoute>
             <MyOrders />
+          </BuyerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: (
+          <BuyerRoute>
+            <Payment />
+          </BuyerRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/bookings/${params.id}`),
+      },
+      {
+        path: "/dashboard/mywishlist",
+        element: (
+          <BuyerRoute>
+            <Wishlist />
           </BuyerRoute>
         ),
       },
@@ -74,7 +98,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/myproducts",
+        path: "/dashboard",
         element: (
           <SellerRoute>
             <MyProducts />
@@ -98,7 +122,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/allbuyers",
+        path: "/dashboard",
         element: (
           <AdminRoute>
             <AllBuyers />

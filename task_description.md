@@ -14,7 +14,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 <!-- 1. Your homepage will have a **navbar** , a banner/slider, Advertised items, second-hand **product categories** section and a realistic **footer**. -->
 
-2. Add **one** extra section on the home page. Make sure it is unique and relevant to your website.
+<!-- 2. Add **one** extra section on the home page. Make sure it is unique and relevant to your website. -->
 
 <!-- 3. **You will have to decide what would be the categories of the second-hand product you have selected.** For instance, if your website is about second-hand furniture, you can divide your categories into the bedroom, kitchen, dining room, etc.; if it is about second-hand car, your categories can be a Microbus, luxury car, electic car, etc. Or you can categorize second-hand products under brand names if you want. However, make sure it is relevant. You will need at least 3 categories, each with at least 2 products. -->
 
@@ -55,9 +55,9 @@ Your website has to be related to selling used (second-hand products) with the a
 
     13.4 React vs. Angular vs. Vue? -->
 
-14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
+<!-- 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page. -->
 
-15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database
+<!-- 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database -->
 
 ## Bonus Requirements
 
@@ -65,9 +65,9 @@ Your website has to be related to selling used (second-hand products) with the a
 
 <!-- 2. At least 16 meaningful GitHub commits for the client side and 9 meaningful commits for the server-side repository. Your code should be clean and organized. Comments should be added where necessary -->
 
-3. Add a meaningful favicon. If data is loading, a spinner will be displayed. When you are loading data by using a loader, make sure you have added a route.
+<!-- 3. Add a meaningful favicon. If data is loading, a spinner will be displayed. When you are loading data by using a loader, make sure you have added a route. -->
 
-4. Implement an extra feature: **WishList** or **Report to Admin**(choose one) in the /category/:id route. A buyer can make a product to his/her wishlist or report an item by clicking a relevant button. If you have implemented the wishlist feature, show them in the buyer's Dashboard in a separate route, "My WishList." A user should be able to purchase the item from the wishlist page. (Just redirect the user to the purchase page)
+<!-- 4. Implement an extra feature: **WishList** or **Report to Admin**(choose one) in the /category/:id route. A buyer can make a product to his/her wishlist or report an item by clicking a relevant button. If you have implemented the wishlist feature, show them in the buyer's Dashboard in a separate route, "My WishList." A user should be able to purchase the item from the wishlist page. (Just redirect the user to the purchase page) -->
 
    If you have implemented the "report to admin" feature, show the reported items in the admin dashboard in a separate route, "Reported Items" (tips: create a separate collection for the wish list and filter by user email address). An admin will be able to delete a reported item.
 

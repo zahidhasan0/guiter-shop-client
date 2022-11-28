@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MobileApp = () => {
   return (
@@ -10,28 +11,24 @@ const MobileApp = () => {
               <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl lg:leading-tight">
                 Use mobile app for better performance
               </h2>
-              <p className="mt-4 text-base text-gray-50">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
-                Exercitation veniam consequat sunt nostrud amet.
-              </p>
+              <p className="mt-4 text-base text-gray-50"></p>
 
-              <div className="flex flex-row items-center mt-8 space-x-4 lg:mt-12">
-                <a href="#" title="" className="flex" role="button">
+              <div className="flex flex-row items-center  mt-8 space-x-4 lg:mt-12">
+                <Link title="" className="flex" role="button">
                   <img
                     className="w-auto h-14"
                     src="https://cdn.rareblocks.xyz/collection/celebration/images/cta/8/btn-app-store.svg"
                     alt=""
                   />
-                </a>
+                </Link>
 
-                <a href="#" title="" className="flex" role="button">
+                <Link title="" className="flex" role="button">
                   <img
                     className="w-auto h-14"
                     src="https://cdn.rareblocks.xyz/collection/celebration/images/cta/8/btn-play-store.svg"
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

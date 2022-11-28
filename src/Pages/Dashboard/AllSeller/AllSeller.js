@@ -30,10 +30,11 @@ const AllSeller = () => {
     }
   };
   return (
-    <div className="overflow-x-auto my-6">
-      <h2 className="text-2xl font-semibold text-center mb-4 text-primary border-b-4 border-primary pb-2 w-1/6">
+    <div className="overflow-x-auto mb-6">
+      <h3 className="text-2xl font-bold text-primary border-b-4 border-primary my-6 text-center pb-2">
         All Seller
-      </h2>
+      </h3>
+
       <table className="table table-zebra w-full">
         <thead>
           <tr>

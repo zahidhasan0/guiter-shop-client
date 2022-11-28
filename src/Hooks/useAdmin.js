@@ -6,12 +6,14 @@ const useAdmin = (email) => {
   const [adminLoading, setAdminLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/admin/${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsAdmin(data.isAdmin);
-        setAdminLoading(false);
-      });
+    if (email) {
+      fetch(`http://localhost:5000/users/admin/${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setIsAdmin(data.isAdmin);
+          setAdminLoading(false);
+        });
+    }
   }, [email]);
   return [isAdmin, adminLoading];
 };

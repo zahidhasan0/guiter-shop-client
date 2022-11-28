@@ -52,7 +52,8 @@ const DashboardLayout = () => {
             </h3>
             {isBuyer && (
               <li>
-                <Link to="/dashboard/myorders">My Orders</Link>
+                <Link to="/dashboard">My Orders</Link>
+                <Link to="/dashboard/mywishlist">My Wishlist</Link>
               </li>
             )}
             {isSeller && (
@@ -61,7 +62,7 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/addproduct">Add A Product</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/myproducts">My Products</Link>
+                  <Link to="/dashboard">My Products</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/mybuyers">My Buyers</Link>
@@ -75,7 +76,7 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/allsellers">All Seller</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/allbuyers">All Buyers</Link>
+                  <Link to="/dashboard">All Buyers</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/reporteditems">Reported Items</Link>
