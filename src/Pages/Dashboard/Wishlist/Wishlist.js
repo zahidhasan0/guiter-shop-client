@@ -33,7 +33,6 @@ const Wishlist = () => {
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Book Now</th>
           </tr>
         </thead>
         <tbody>
@@ -48,17 +47,10 @@ const Wishlist = () => {
                     </div>
                   </div>
                 </th>
-                <td>{wishProduct.name}</td>
+                <Link to={``}>
+                  <td>{wishProduct.name}</td>
+                </Link>
                 <td>${wishProduct.resalePrice}</td>
-
-                <td>
-                  <label
-                    htmlFor="product-book-modal"
-                    className="btn btn-primary btn-sm"
-                  >
-                    Book Now
-                  </label>
-                </td>
               </tr>
             ))}
         </tbody>
